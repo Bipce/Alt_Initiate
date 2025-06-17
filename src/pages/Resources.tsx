@@ -7,7 +7,7 @@ const Resources = () => {
     const [isItemSelected, setIsItemSelected] = useState(false)
 
     return (
-        <div className="flex gap-3 p-6">
+        <div className="flex gap-3 p-6 max-w-[1536px] mx-auto">
             <div className="bg-gray-900 shadow shadow-gray-500 w-64 rounded-lg">
                 <div className="border-b border-gray-500 p-4">
                     <button
