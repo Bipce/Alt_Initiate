@@ -4,6 +4,7 @@ import compression from "compression";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import http from "http";
+import { pool } from "./database";
 
 const port = 8080;
 
@@ -17,8 +18,14 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+app.get('/api/v1/resources', async (req, res) => {
+  try {
+    const [rows] = await pool.execute('SELECT * FROM  SharedResources');
+    res.json(rows);
+  } catch (err) {
+    console.error('Error SQL :', err);
+    res.status(500).json({ error: 'Error server', details: err.message || err });
+  }
 })
 
 const server = http.createServer(app)
