@@ -1,0 +1,140 @@
+[
+  {
+    "id": 1,
+    "title": "Conference Schedule",
+    "description": "Detailed schedule for Tech Conference",
+    "resource_type": "document",
+    "path": "/storage/documents/schedule.pdf",
+    "mime_type": "application/pdf",
+    "size": 1024576,
+    "is_public": true,
+    "creator": {
+      "id": 1,
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    "parent": null,
+    "metadata": {
+      "version": "1.0",
+      "tags": [
+        "conference",
+        "schedule"
+      ],
+      "last_accessed": "2024-12-02T09:45:00Z",
+      "download_count": 42
+    },
+    "access_rights": {
+      "can_edit": true,
+      "can_delete": true,
+      "can_share": true
+    },
+    "versions": [
+      {
+        "version": "1.0",
+        "created_at": "2024-12-02T10:00:00Z",
+        "created_by": {
+          "id": 1,
+          "firstname": "John",
+          "lastname": "Doe"
+        },
+        "size": 1024576
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Workshop Agenda",
+    "description": "Agenda for AI Workshop 2025",
+    "resource_type": "document",
+    "path": "/storage/documents/workshop_agenda.pdf",
+    "mime_type": "document/txt",
+    "size": 854320,
+    "is_public": false,
+    "creator": {
+      "id": 2,
+      "firstname": "Alice",
+      "lastname": "Smith"
+    },
+    "parent": null,
+    "metadata": {
+      "version": "1.0",
+      "tags": [
+        "AI",
+        "workshop",
+        "agenda"
+      ],
+      "last_accessed": "2025-03-15T14:20:00Z",
+      "download_count": 17
+    },
+    "access_rights": {
+      "can_edit": false,
+      "can_delete": false,
+      "can_share": true
+    },
+    "versions": [
+      {
+        "version": "1.0",
+        "created_at": "2025-03-10T09:00:00Z",
+        "created_by": {
+          "id": 2,
+          "firstname": "Alice",
+          "lastname": "Smith"
+        },
+        "size": 854320
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Annual Report",
+    "description": "Company's annual performance report",
+    "resource_type": "document",
+    "path": "/storage/documents/annual_report_2024.pdf",
+    "mime_type": "application/pdf",
+    "size": 2048579,
+    "is_public": true,
+    "creator": {
+      "id": 3,
+      "firstname": "Michael",
+      "lastname": "Lee"
+    },
+    "parent": null,
+    "metadata": {
+      "version": "2.1",
+      "tags": [
+        "report",
+        "finance",
+        "annual"
+      ],
+      "last_accessed": "2025-01-10T08:30:00Z",
+      "download_count": 105
+    },
+    "access_rights": {
+      "can_edit": true,
+      "can_delete": false,
+      "can_share": true
+    },
+    "versions": [
+      {
+        "version": "2.0",
+        "created_at": "2024-11-30T15:00:00Z",
+        "created_by": {
+          "id": 3,
+          "firstname": "Michael",
+          "lastname": "Lee"
+        },
+        "size": 1987420
+      },
+      {
+        "version": "2.1",
+        "created_at": "2025-01-05T10:15:00Z",
+        "created_by": {
+          "id": 3,
+          "firstname": "Michael",
+          "lastname": "Lee"
+        },
+        "size": 2048579
+      }
+    ]
+  }
+]
