@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ArrowDownTrayIcon, Cog6ToothIcon, DocumentIcon, EllipsisVerticalIcon, PencilSquareIcon, TrashIcon,
 } from "@heroicons/react/24/outline";
@@ -21,17 +21,34 @@ const HomeFile: React.FC<IProps> = ({
                                       title, extension, size, updatedAt, isNotLast, isPublic, onDelete, onRename,
                                       resourceId,
                                     }) => {
-  const [isClicked, setIsClicked] = useState(false);
+  const [isSlideOpen, setIsSlideOpen] = useState(false);
   const [renamingId, setRenamingId] = useState<number | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const catMenuRef = useRef<HTMLDivElement>(null);
 
   const handleOnClickSettings = () => {
-    setIsClicked((prev) => !prev);
+    setIsSlideOpen((prev) => !prev);
   };
 
   const handleOnRename = () => {
     setRenamingId(resourceId);
   };
+
+  useEffect(() => {
+    const closeOpenMenus = (e: MouseEvent) => {
+      if (catMenuRef.current) {
+        if (isSlideOpen && !catMenuRef.current.contains(e.target as Node)) {
+          setIsSlideOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener("mousedown", closeOpenMenus);
+
+    return () => {
+      document.removeEventListener("mousedown", closeOpenMenus);
+    };
+  }, [isSlideOpen]);
 
   return (
     <div
@@ -45,7 +62,7 @@ const HomeFile: React.FC<IProps> = ({
                    onKeyDown={(e) => {
                      if (e.key === "Enter") {
                        setRenamingId(null);
-                       setIsClicked(false);
+                       setIsSlideOpen(false);
 
                        if (inputRef.current) {
                          onRename(resourceId, inputRef.current.value);
@@ -68,8 +85,8 @@ const HomeFile: React.FC<IProps> = ({
           <EllipsisVerticalIcon className="size-5 text-gray-400" />
         </button>
 
-        {isClicked && (
-          <div className="w-48 rounded-md shadow-lg shadow-gray-500 py-1 absolute z-50 bg-gray-900">
+        {isSlideOpen && (
+          <div className="w-48 rounded-md shadow-lg shadow-gray-500 py-1 absolute z-50 bg-gray-900" ref={catMenuRef}>
             <DropDownButton>
               <ArrowDownTrayIcon className="size-4" />Download
             </DropDownButton>
@@ -84,7 +101,7 @@ const HomeFile: React.FC<IProps> = ({
 
             <DropDownButton color="text-red-600" onHandleOnClick={() => {
               onDelete();
-              setIsClicked(false);
+              setIsSlideOpen(false);
             }}>
               <TrashIcon className="size-4 text-red-600" />Delete
             </DropDownButton>
